@@ -40,22 +40,22 @@
         android:textStyle="bold" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btnDatePicker"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
-        android:background=""
+        android:background="#ffffff"
         android:text="SELECT DATE"
         android:textColor="@color/black"
-        android:textSize="18sp"
+        android:textSize="24sp"
         android:textStyle="bold" />
     <TextView
+        android:id="@+id/tvSelectedDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
-        android:text="1/12/2000 "
-        android:textColor="@color/material_on_surface_emphasis_high_type"
-        android:textSize="24sp"
+        android:textColor="#844046"
+        android:textSize="20sp"
         android:textStyle="bold" />
 
     <TextView
@@ -63,23 +63,21 @@
         android:layout_height="wrap_content"
         android:text="Selected Date "
         android:textColor="@color/cardview_dark_background"
-        android:textSize="24sp"
-        android:textStyle="bold" />
+        android:textSize="18sp" />
     <TextView
+        android:id="@+id/tvSelectedInMinutes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
-        android:text="12000 "
         android:textColor="@color/material_on_surface_emphasis_high_type"
-        android:textSize="24sp"
+        android:textSize="36sp"
         android:textStyle="bold" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="In minutes till date "
+        android:text="Age in minutes "
         android:textColor="@color/cardview_dark_background"
-        android:textSize="24sp"
-        android:textStyle="bold" />
+        android:textSize="20sp" />
 
 </LinearLayout>
