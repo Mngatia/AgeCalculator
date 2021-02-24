@@ -4,8 +4,9 @@ import android.app.DatePickerDialog
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import kotlinx.android.synthetic.main.activity_main.*
+import java.text.SimpleDateFormat
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
@@ -26,12 +27,32 @@ class MainActivity : AppCompatActivity() {
         val month = myCalendar.get(Calendar.MONTH)
         val day = myCalendar.get(Calendar.DAY_OF_MONTH)
 
-         DatePickerDialog(this,
-                DatePickerDialog.OnDateSetListener {
-                    view, year, month, dayOfMonth ->
-               }, year, month, day).show()
-                 Toast.makeText(this,
-                         "The chosen year is $year, the month is $month and the day is $day", Toast.LENGTH_LONG).show()
+        val dpd = DatePickerDialog(this,
+                DatePickerDialog.OnDateSetListener { view, selectedYear, selectedMonth, selectedDayOfMonth ->
+//             Toast.makeText(this,
+//                     "The chosen year is $selectedYear, the month is $selectedMonth and the day is $selectedDayOfMonth"
+//                     , Toast.LENGTH_LONG).show()
+             val selectedDate = "$selectedDayOfMonth/${selectedMonth+1}/$selectedYear"
+
+                    tvSelectedDate.setText(selectedDate)
+                    val sdf = SimpleDateFormat("dd/MM/yyy", Locale.ENGLISH)
+                    val  theDate = sdf.parse(selectedDate)
+
+                    val selectedDateToMinutes = theDate!!.time / 60000
+                    val currentDate = sdf.parse(sdf.format(System.currentTimeMillis()))
+                    //current date in to minutes
+                    val currectDateToMinutes = currentDate!!.time / 60000
+
+                    //Difference in minutes
+                    val differenceInMinutes = currectDateToMinutes - selectedDateToMinutes
+                    //Difference in minutes to textView
+                    tvSelectedDateInMinutes.setText(differenceInMinutes.toString())
+          },
+                 year,
+                 month,
+                 day)
+      dpd.datePicker.setMaxDate(Date().time - 86400000)
+      dpd.show() //shows the datePicker dialog
     }
 
 }
